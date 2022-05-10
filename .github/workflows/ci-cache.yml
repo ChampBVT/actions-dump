@@ -17,6 +17,6 @@ jobs:
           # Useful for caching dependencies in monorepos:
           cache-dependency-path: yarn.lock
 
-      - run: yarn
+      - run: yarn install
 
       ### - run: yarn test
