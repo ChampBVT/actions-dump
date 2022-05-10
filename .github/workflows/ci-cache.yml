@@ -1,0 +1,22 @@
+name: CI cache
+
+on: workflow_dispatch
+
+jobs:
+  ci:
+    name: Running CI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3.0.2
+
+      - uses: actions/setup-node@v3.1.1
+        with:
+          node-version: v16.14.2
+          cache: 'yarn'
+          # Useful for caching dependencies in monorepos:
+          cache-dependency-path: yarn.lock
+
+      - run: yarn
+
+      ### - run: yarn test
